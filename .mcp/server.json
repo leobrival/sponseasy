@@ -1,0 +1,22 @@
+{
+  "projectName": "Sponseasy",
+  "servers": {
+    "vercel": {
+      "url": "https://mcp.vercel.com",
+      "auth": "OAuth",
+      "projectId": "",
+      "orgId": ""
+    },
+    "figma": {
+      "url": "http://127.0.0.1:3845/mcp",
+      "auth": "None (local)",
+      "fileId": "",
+      "designUrl": ""
+    },
+    "chrome-devtools": {
+      "url": "npx chrome-devtools-mcp@latest",
+      "auth": "None",
+      "type": ""
+    }
+  }
+}
