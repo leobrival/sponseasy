@@ -16,11 +16,11 @@ export function useTranslation() {
 
   const t = (key: TranslationKey): string => {
     const keys = key.split('.');
-    let value: any = translations[locale];
+    let value: Translations | string | Record<string, unknown> = translations[locale];
 
     for (const k of keys) {
       if (value && typeof value === 'object') {
-        value = value[k];
+        value = value[k as keyof typeof value] as Record<string, unknown>;
       } else {
         return key; // Return key if translation not found
       }
@@ -34,11 +34,11 @@ export function useTranslation() {
 
 export function getStaticTranslation(locale: string, key: TranslationKey): string {
   const keys = key.split('.');
-  let value: any = translations[locale] || translations.en;
+  let value: Translations | string | Record<string, unknown> = translations[locale] || translations.en;
 
   for (const k of keys) {
     if (value && typeof value === 'object') {
-      value = value[k];
+      value = value[k as keyof typeof value] as Record<string, unknown>;
     } else {
       return key;
     }

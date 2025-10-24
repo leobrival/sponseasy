@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { i18n } from './i18n.config';
+import { i18n, type Locale } from './i18n.config';
 
 function getLocale(request: NextRequest): string {
   // Check if locale is in pathname
@@ -13,7 +13,7 @@ function getLocale(request: NextRequest): string {
 
   // Check cookies
   const localeCookie = request.cookies.get('NEXT_LOCALE')?.value;
-  if (localeCookie && i18n.locales.includes(localeCookie as any)) {
+  if (localeCookie && i18n.locales.includes(localeCookie as Locale)) {
     return localeCookie;
   }
 
@@ -25,7 +25,7 @@ function getLocale(request: NextRequest): string {
       .split('-')[0]
       .toLowerCase();
 
-    if (i18n.locales.includes(browserLocale as any)) {
+    if (i18n.locales.includes(browserLocale as Locale)) {
       return browserLocale;
     }
   }

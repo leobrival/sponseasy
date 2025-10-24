@@ -15,9 +15,9 @@ import { type Locale } from "@/i18n.config";
 export default async function Home({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
+  const { locale } = await params as { locale: Locale };
   const landingPageContent = getContent(locale);
 
   return (
